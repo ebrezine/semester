@@ -17,4 +17,20 @@ defmodule Project.OrganizationFixtures do
 
     area
   end
+
+  @doc """
+  Generate a developer.
+  """
+  def developer_fixture(attrs \\ %{}) do
+    {:ok, developer} =
+      attrs
+      |> Enum.into(%{
+        email: "some email",
+        firstname: "some firstname",
+        lastname: "some lastname"
+      })
+      |> Project.Organization.create_developer()
+
+    developer
+  end
 end
