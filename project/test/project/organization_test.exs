@@ -56,4 +56,62 @@ defmodule Project.OrganizationTest do
       assert %Ecto.Changeset{} = Organization.change_area(area)
     end
   end
+
+  describe "developers" do
+    alias Project.Organization.Developer
+
+    import Project.OrganizationFixtures
+
+    @invalid_attrs %{email: nil, firstname: nil, lastname: nil}
+
+    test "list_developers/0 returns all developers" do
+      developer = developer_fixture()
+      assert Organization.list_developers() == [developer]
+    end
+
+    test "get_developer!/1 returns the developer with given id" do
+      developer = developer_fixture()
+      assert Organization.get_developer!(developer.id) == developer
+    end
+
+    test "create_developer/1 with valid data creates a developer" do
+      valid_attrs = %{email: "some email", firstname: "some firstname", lastname: "some lastname"}
+
+      assert {:ok, %Developer{} = developer} = Organization.create_developer(valid_attrs)
+      assert developer.email == "some email"
+      assert developer.firstname == "some firstname"
+      assert developer.lastname == "some lastname"
+    end
+
+    test "create_developer/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Organization.create_developer(@invalid_attrs)
+    end
+
+    test "update_developer/2 with valid data updates the developer" do
+      developer = developer_fixture()
+      update_attrs = %{email: "some updated email", firstname: "some updated firstname", lastname: "some updated lastname"}
+
+      assert {:ok, %Developer{} = developer} = Organization.update_developer(developer, update_attrs)
+      assert developer.email == "some updated email"
+      assert developer.firstname == "some updated firstname"
+      assert developer.lastname == "some updated lastname"
+    end
+
+    test "update_developer/2 with invalid data returns error changeset" do
+      developer = developer_fixture()
+      assert {:error, %Ecto.Changeset{}} = Organization.update_developer(developer, @invalid_attrs)
+      assert developer == Organization.get_developer!(developer.id)
+    end
+
+    test "delete_developer/1 deletes the developer" do
+      developer = developer_fixture()
+      assert {:ok, %Developer{}} = Organization.delete_developer(developer)
+      assert_raise Ecto.NoResultsError, fn -> Organization.get_developer!(developer.id) end
+    end
+
+    test "change_developer/1 returns a developer changeset" do
+      developer = developer_fixture()
+      assert %Ecto.Changeset{} = Organization.change_developer(developer)
+    end
+  end
 end
