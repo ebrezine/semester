@@ -19,6 +19,21 @@ defmodule Project.OrganizationFixtures do
   end
 
   @doc """
+  Generate a task.
+  """
+  def task_fixture(attrs \\ %{}) do
+    {:ok, task} =
+      attrs
+      |> Enum.into(%{
+        description: "some description",
+        name: "some name"
+      })
+      |> Project.Organization.create_task()
+
+    task
+  end
+
+  @doc """
   Generate a developer.
   """
   def developer_fixture(attrs \\ %{}) do
