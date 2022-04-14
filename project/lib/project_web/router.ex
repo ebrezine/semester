@@ -16,6 +16,7 @@ defmodule ProjectWeb.Router do
 
   scope "/", ProjectWeb do
     pipe_through :browser
+    resources "/areas", AreaController
 
     get "/", PageController, :index
   end
