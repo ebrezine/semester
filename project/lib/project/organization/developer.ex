@@ -4,9 +4,9 @@ defmodule Project.Organization.Developer do
 
   schema "developers" do
     field :email, :string
-    field :firstname, :string
-    field :lastname, :string
-    field :expertise, :id
+    field :firstName, :string
+    field :lastName, :string
+    belongs_to :expertise, Project.Organization.Expertise
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Project.Organization.Developer do
   @doc false
   def changeset(developer, attrs) do
     developer
-    |> cast(attrs, [:firstname, :lastname, :email])
-    |> validate_required([:firstname, :lastname, :email])
+    |> cast(attrs, [:firstName, :lastName, :email, :expertise_id])
+    |> validate_required([:firstName, :lastName, :email])
   end
 end

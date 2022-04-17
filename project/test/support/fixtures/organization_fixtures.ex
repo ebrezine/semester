@@ -48,4 +48,34 @@ defmodule Project.OrganizationFixtures do
 
     developer
   end
+
+  @doc """
+  Generate a expertise.
+  """
+  def expertise_fixture(attrs \\ %{}) do
+    {:ok, expertise} =
+      attrs
+      |> Enum.into(%{
+        name: "some name"
+      })
+      |> Project.Organization.create_expertise()
+
+    expertise
+  end
+
+  @doc """
+  Generate a developer.
+  """
+  def developer_fixture(attrs \\ %{}) do
+    {:ok, developer} =
+      attrs
+      |> Enum.into(%{
+        email: "some email",
+        firstName: "some firstName",
+        lastName: "some lastName"
+      })
+      |> Project.Organization.create_developer()
+
+    developer
+  end
 end

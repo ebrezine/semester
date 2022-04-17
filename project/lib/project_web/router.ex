@@ -16,8 +16,13 @@ defmodule ProjectWeb.Router do
 
   scope "/", ProjectWeb do
     pipe_through :browser
+    # global tables
     resources "/areas", AreaController
+    resources "/expertises", ExpertiseController
+
+    # main tables
     resources "/tasks", TaskController
+    resources "/developers", DeveloperController
 
     get "/", PageController, :index
   end

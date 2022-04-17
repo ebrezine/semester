@@ -5,17 +5,19 @@
     </div>
   <% end %>
 
-  <%= label f, :firstname %>
-  <%= text_input f, :firstname %>
-  <%= error_tag f, :firstname %>
+  <%= label f, :firstName %>
+  <%= text_input f, :firstName %>
+  <%= error_tag f, :firstName %>
 
-  <%= label f, :lastname %>
-  <%= text_input f, :lastname %>
-  <%= error_tag f, :lastname %>
+  <%= label f, :lastName %>
+  <%= text_input f, :lastName %>
+  <%= error_tag f, :lastName %>
 
   <%= label f, :email %>
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
+
+  <%= select f, :expertise_id, Enum.map(@expertises, &{&1.name, &1.id}) %>
 
   <div>
     <%= submit "Save" %>

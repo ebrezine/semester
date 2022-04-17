@@ -293,4 +293,100 @@ defmodule Project.Organization do
   def change_developer(%Developer{} = developer, attrs \\ %{}) do
     Developer.changeset(developer, attrs)
   end
+
+  alias Project.Organization.Expertise
+
+  @doc """
+  Returns the list of expertises.
+
+  ## Examples
+
+      iex> list_expertises()
+      [%Expertise{}, ...]
+
+  """
+  def list_expertises do
+    Repo.all(Expertise)
+  end
+
+  @doc """
+  Gets a single expertise.
+
+  Raises `Ecto.NoResultsError` if the Expertise does not exist.
+
+  ## Examples
+
+      iex> get_expertise!(123)
+      %Expertise{}
+
+      iex> get_expertise!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_expertise!(id), do: Repo.get!(Expertise, id)
+
+  @doc """
+  Creates a expertise.
+
+  ## Examples
+
+      iex> create_expertise(%{field: value})
+      {:ok, %Expertise{}}
+
+      iex> create_expertise(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_expertise(attrs \\ %{}) do
+    %Expertise{}
+    |> Expertise.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a expertise.
+
+  ## Examples
+
+      iex> update_expertise(expertise, %{field: new_value})
+      {:ok, %Expertise{}}
+
+      iex> update_expertise(expertise, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_expertise(%Expertise{} = expertise, attrs) do
+    expertise
+    |> Expertise.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a expertise.
+
+  ## Examples
+
+      iex> delete_expertise(expertise)
+      {:ok, %Expertise{}}
+
+      iex> delete_expertise(expertise)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_expertise(%Expertise{} = expertise) do
+    Repo.delete(expertise)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking expertise changes.
+
+  ## Examples
+
+      iex> change_expertise(expertise)
+      %Ecto.Changeset{data: %Expertise{}}
+
+  """
+  def change_expertise(%Expertise{} = expertise, attrs \\ %{}) do
+    Expertise.changeset(expertise, attrs)
+  end
 end

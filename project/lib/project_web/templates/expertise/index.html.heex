@@ -1,0 +1,26 @@
+<h1>Listing Expertises</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for expertise <- @expertises do %>
+    <tr>
+      <td><%= expertise.name %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.expertise_path(@conn, :show, expertise) %></span>
+        <span><%= link "Edit", to: Routes.expertise_path(@conn, :edit, expertise) %></span>
+        <span><%= link "Delete", to: Routes.expertise_path(@conn, :delete, expertise), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Expertise", to: Routes.expertise_path(@conn, :new) %></span>

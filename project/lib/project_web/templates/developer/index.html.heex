@@ -6,6 +6,7 @@
       <th>Firstname</th>
       <th>Lastname</th>
       <th>Email</th>
+      <th>Area of Expertise</th>
 
       <th></th>
     </tr>
@@ -13,9 +14,10 @@
   <tbody>
 <%= for developer <- @developers do %>
     <tr>
-      <td><%= developer.firstname %></td>
-      <td><%= developer.lastname %></td>
+      <td><%= developer.firstName %></td>
+      <td><%= developer.lastName %></td>
       <td><%= developer.email %></td>
+      <td><%= developer.expertise.name %></td>
 
       <td>
         <span><%= link "Show", to: Routes.developer_path(@conn, :show, developer) %></span>

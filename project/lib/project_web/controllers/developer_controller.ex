@@ -3,15 +3,18 @@ defmodule ProjectWeb.DeveloperController do
 
   alias Project.Organization
   alias Project.Organization.Developer
+  alias Project.Repo
 
   def index(conn, _params) do
-    developers = Organization.list_developers()
+    developers = Organization.list_developers() |> Repo.preload(:expertise)
+    IO.inspect(developers)
     render(conn, "index.html", developers: developers)
   end
 
   def new(conn, _params) do
     changeset = Organization.change_developer(%Developer{})
-    render(conn, "new.html", changeset: changeset)
+    expertises = Organization.list_expertises()
+    render(conn, "new.html", changeset: changeset, expertises: expertises)
   end
 
   def create(conn, %{"developer" => developer_params}) do
@@ -27,18 +30,19 @@ defmodule ProjectWeb.DeveloperController do
   end
 
   def show(conn, %{"id" => id}) do
-    developer = Organization.get_developer!(id)
+    developer = Organization.get_developer!(id) |> Repo.preload(:expertise)
     render(conn, "show.html", developer: developer)
   end
 
   def edit(conn, %{"id" => id}) do
-    developer = Organization.get_developer!(id)
+    developer = Organization.get_developer!(id) |> Repo.preload(:expertise)
     changeset = Organization.change_developer(developer)
-    render(conn, "edit.html", developer: developer, changeset: changeset)
+    expertises = Organization.list_expertises()
+    render(conn, "edit.html", developer: developer, changeset: changeset, expertises: expertises)
   end
 
   def update(conn, %{"id" => id, "developer" => developer_params}) do
-    developer = Organization.get_developer!(id)
+    developer = Organization.get_developer!(id) |> Repo.preload(:expertise)
 
     case Organization.update_developer(developer, developer_params) do
       {:ok, developer} ->

@@ -1,0 +1,5 @@
+<h1>Edit Expertise</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.expertise_path(@conn, :update, @expertise)) %>
+
+<span><%= link "Back", to: Routes.expertise_path(@conn, :index) %></span>

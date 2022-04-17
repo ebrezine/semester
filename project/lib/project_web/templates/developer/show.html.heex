@@ -4,17 +4,22 @@
 
   <li>
     <strong>Firstname:</strong>
-    <%= @developer.firstname %>
+    <%= @developer.firstName %>
   </li>
 
   <li>
     <strong>Lastname:</strong>
-    <%= @developer.lastname %>
+    <%= @developer.lastName %>
   </li>
 
   <li>
     <strong>Email:</strong>
     <%= @developer.email %>
+  </li>
+
+  <li>
+    <strong>Area of Expertise:</strong>
+    <%= @developer.expertise.name %>
   </li>
 
 </ul>

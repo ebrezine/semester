@@ -1,0 +1,13 @@
+<h1>Show Expertise</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @expertise.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.expertise_path(@conn, :edit, @expertise) %></span> |
+<span><%= link "Back", to: Routes.expertise_path(@conn, :index) %></span>
