@@ -6,13 +6,13 @@
   <article class="column">
     <h2>Developers</h2>
     <ul>
-      Manage your <a href="http://localhost:4000/developers">developers</a> here
+      Manage your <%= link "developers", to: Routes.developer_path(@conn, :index) %> here
     </ul>
   </article>
   <article class="column">
     <h2>Tasks</h2>
     <ul>
-      Manage your <a href="http://localhost:4000/tasks">tasks</a> here
+      Manage your <%= link "tasks", to: Routes.task_path(@conn, :index) %> here
     </ul>
   </article>
 </section>
