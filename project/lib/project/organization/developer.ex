@@ -3,9 +3,9 @@ defmodule Project.Organization.Developer do
   import Ecto.Changeset
 
   schema "developers" do
-    field :email, :string
     field :firstName, :string
     field :lastName, :string
+    field :email, :string
     belongs_to :expertise, Project.Organization.Expertise
 
     timestamps()
