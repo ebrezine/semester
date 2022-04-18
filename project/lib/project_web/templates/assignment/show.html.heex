@@ -1,0 +1,33 @@
+<h1>Show Assignment</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @assignment.name %>
+  </li>
+
+  <li>
+    <strong>Due date:</strong>
+    <%= @assignment.due_date %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @assignment.status.name %>
+  </li>
+
+  <li>
+    <strong>Developer:</strong>
+    <%= @assignment.developer_id %>
+  </li>
+
+  <li>
+    <strong>Task:</strong>
+    <%= @assignment.task_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.assignment_path(@conn, :edit, @assignment) %></span> |
+<span><%= link "Back", to: Routes.assignment_path(@conn, :index) %></span>

@@ -282,4 +282,114 @@ defmodule Project.OrganizationTest do
       assert %Ecto.Changeset{} = Organization.change_developer(developer)
     end
   end
+
+  describe "statuses" do
+    alias Project.Organization.Status
+
+    import Project.OrganizationFixtures
+
+    @invalid_attrs %{name: nil}
+
+    test "list_statuses/0 returns all statuses" do
+      status = status_fixture()
+      assert Organization.list_statuses() == [status]
+    end
+
+    test "get_status!/1 returns the status with given id" do
+      status = status_fixture()
+      assert Organization.get_status!(status.id) == status
+    end
+
+    test "create_status/1 with valid data creates a status" do
+      valid_attrs = %{name: "some name"}
+
+      assert {:ok, %Status{} = status} = Organization.create_status(valid_attrs)
+      assert status.name == "some name"
+    end
+
+    test "create_status/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Organization.create_status(@invalid_attrs)
+    end
+
+    test "update_status/2 with valid data updates the status" do
+      status = status_fixture()
+      update_attrs = %{name: "some updated name"}
+
+      assert {:ok, %Status{} = status} = Organization.update_status(status, update_attrs)
+      assert status.name == "some updated name"
+    end
+
+    test "update_status/2 with invalid data returns error changeset" do
+      status = status_fixture()
+      assert {:error, %Ecto.Changeset{}} = Organization.update_status(status, @invalid_attrs)
+      assert status == Organization.get_status!(status.id)
+    end
+
+    test "delete_status/1 deletes the status" do
+      status = status_fixture()
+      assert {:ok, %Status{}} = Organization.delete_status(status)
+      assert_raise Ecto.NoResultsError, fn -> Organization.get_status!(status.id) end
+    end
+
+    test "change_status/1 returns a status changeset" do
+      status = status_fixture()
+      assert %Ecto.Changeset{} = Organization.change_status(status)
+    end
+  end
+
+  describe "assignments" do
+    alias Project.Organization.Assignment
+
+    import Project.OrganizationFixtures
+
+    @invalid_attrs %{due_date: nil, name: nil}
+
+    test "list_assignments/0 returns all assignments" do
+      assignment = assignment_fixture()
+      assert Organization.list_assignments() == [assignment]
+    end
+
+    test "get_assignment!/1 returns the assignment with given id" do
+      assignment = assignment_fixture()
+      assert Organization.get_assignment!(assignment.id) == assignment
+    end
+
+    test "create_assignment/1 with valid data creates a assignment" do
+      valid_attrs = %{due_date: "some due_date", name: "some name"}
+
+      assert {:ok, %Assignment{} = assignment} = Organization.create_assignment(valid_attrs)
+      assert assignment.due_date == "some due_date"
+      assert assignment.name == "some name"
+    end
+
+    test "create_assignment/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Organization.create_assignment(@invalid_attrs)
+    end
+
+    test "update_assignment/2 with valid data updates the assignment" do
+      assignment = assignment_fixture()
+      update_attrs = %{due_date: "some updated due_date", name: "some updated name"}
+
+      assert {:ok, %Assignment{} = assignment} = Organization.update_assignment(assignment, update_attrs)
+      assert assignment.due_date == "some updated due_date"
+      assert assignment.name == "some updated name"
+    end
+
+    test "update_assignment/2 with invalid data returns error changeset" do
+      assignment = assignment_fixture()
+      assert {:error, %Ecto.Changeset{}} = Organization.update_assignment(assignment, @invalid_attrs)
+      assert assignment == Organization.get_assignment!(assignment.id)
+    end
+
+    test "delete_assignment/1 deletes the assignment" do
+      assignment = assignment_fixture()
+      assert {:ok, %Assignment{}} = Organization.delete_assignment(assignment)
+      assert_raise Ecto.NoResultsError, fn -> Organization.get_assignment!(assignment.id) end
+    end
+
+    test "change_assignment/1 returns a assignment changeset" do
+      assignment = assignment_fixture()
+      assert %Ecto.Changeset{} = Organization.change_assignment(assignment)
+    end
+  end
 end

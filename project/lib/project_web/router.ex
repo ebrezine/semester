@@ -19,10 +19,12 @@ defmodule ProjectWeb.Router do
     # global tables
     resources "/areas", AreaController
     resources "/expertises", ExpertiseController
+    resources "/statuses", StatusController
 
     # main tables
     resources "/tasks", TaskController
     resources "/developers", DeveloperController
+    resources "/assignments", AssignmentController
 
     get "/", PageController, :index
   end

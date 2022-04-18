@@ -78,4 +78,33 @@ defmodule Project.OrganizationFixtures do
 
     developer
   end
+
+  @doc """
+  Generate a status.
+  """
+  def status_fixture(attrs \\ %{}) do
+    {:ok, status} =
+      attrs
+      |> Enum.into(%{
+        name: "some name"
+      })
+      |> Project.Organization.create_status()
+
+    status
+  end
+
+  @doc """
+  Generate a assignment.
+  """
+  def assignment_fixture(attrs \\ %{}) do
+    {:ok, assignment} =
+      attrs
+      |> Enum.into(%{
+        due_date: "some due_date",
+        name: "some name"
+      })
+      |> Project.Organization.create_assignment()
+
+    assignment
+  end
 end
