@@ -18,6 +18,25 @@
   </li>
 
 </ul>
+<h2>Current Assignments</h2>
 
+<ul>
+  <%= for assignment <- @assignments, assignment.task_id == @task.id do %>
+    <h3> <%= assignment.name %> </h3>
+    <li><strong>Due:</strong> <%= assignment.due_date %></li>
+    <li><strong>Status:</strong> <%= assignment.status.name %></li>
+    <li><strong>Task:</strong> <%= assignment.developer.firstname %></li>
+    <ul>
+      <li><strong>Description:</strong> <%= assignment.task.description %></li>
+      <li>
+        <strong>Description:</strong>
+        <%= for area <- @areas, area.id == assignment.task.area_id do %>
+        <!-- in theory this should only run once -->
+          <%= area.name %>
+        <%end%>
+      </li>
+    </ul>
+  <% end %>
+</ul>
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span> |
 <span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
