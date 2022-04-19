@@ -2,6 +2,12 @@
   <h1><%= gettext "Welcome to %{name}!", name: "Elias and Erik's Project" %></h1>
 </section>
 
+<h2>Authors</h2>
+<ul>
+  <li>Elias Brezine</li>
+  <li>Erik Marsh</li>
+</ul>
+
 <section class="row">
   <article class="column">
     <h2>Developers</h2>
@@ -16,3 +22,5 @@
     </ul>
   </article>
 </section>
+<h2>Assignments</h2>
+Create a new <%= link "assignment", to: Routes.assignment_path(@conn, :new) %> here
