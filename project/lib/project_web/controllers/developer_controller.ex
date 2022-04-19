@@ -31,7 +31,9 @@ defmodule ProjectWeb.DeveloperController do
 
   def show(conn, %{"id" => id}) do
     developer = Organization.get_developer!(id) |> Repo.preload(:expertise)
-    render(conn, "show.html", developer: developer)
+    assignments = Organization.list_assignments() |> Repo.preload(:task) |> Repo.preload(:status) |> Repo.preload(:developer)
+    areas = Organization.list_areas()
+    render(conn, "show.html", developer: developer, assignments: assignments, areas: areas)
   end
 
   def edit(conn, %{"id" => id}) do
