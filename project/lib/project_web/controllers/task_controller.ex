@@ -30,7 +30,9 @@ defmodule ProjectWeb.TaskController do
 
   def show(conn, %{"id" => id}) do
     task = Organization.get_task!(id) |> Repo.preload(:area)
-    render(conn, "show.html", task: task)
+    assignments = Organization.list_assignments() |> Repo.preload(:task) |> Repo.preload(:status) |> Repo.preload(:developer)
+    areas = Organization.list_areas()
+    render(conn, "show.html", task: task, assignments: assignments, areas: areas)
   end
 
   def edit(conn, %{"id" => id}) do

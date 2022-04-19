@@ -19,12 +19,16 @@
 
   <li>
     <strong>Developer:</strong>
-    <%= @assignment.developer_id %>
+    <%= for developer <- @developers, developer.id == @assignment.developer_id do %>
+      <%= developer.firstName %> <%= developer.lastName %>
+    <% end %>
   </li>
 
   <li>
     <strong>Task:</strong>
-    <%= @assignment.task_id %>
+    <%= for task <- @tasks, task.id == @assignment.task_id do %>
+      <%= task.name %>
+    <% end %>
   </li>
 
 </ul>

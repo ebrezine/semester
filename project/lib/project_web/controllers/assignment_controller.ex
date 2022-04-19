@@ -33,7 +33,9 @@ defmodule ProjectWeb.AssignmentController do
   def show(conn, %{"id" => id}) do
     assignment = Organization.get_assignment!(id) |> Repo.preload(:status) |> Repo.preload(:developer) |> Repo.preload(:task)# |> Repo.preload(:expertise) |> Repo.preload(:area)
     IO.inspect(assignment)
-    render(conn, "show.html", assignment: assignment)
+    developers = Organization.list_developers()
+    tasks = Organization.list_tasks()
+    render(conn, "show.html", assignment: assignment, developers: developers, tasks: tasks)
   end
 
   def edit(conn, %{"id" => id}) do

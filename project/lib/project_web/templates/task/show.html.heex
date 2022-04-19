@@ -25,12 +25,12 @@
     <h3> <%= assignment.name %> </h3>
     <li><strong>Due:</strong> <%= assignment.due_date %></li>
     <li><strong>Status:</strong> <%= assignment.status.name %></li>
-    <li><strong>Task:</strong> <%= assignment.developer.firstname %></li>
+    <li><strong>Developer:</strong> <%= assignment.developer.firstName %> <%= assignment.developer.lastName %></li>
     <ul>
-      <li><strong>Description:</strong> <%= assignment.task.description %></li>
+      <li><strong>Email:</strong> <%= assignment.developer.email %></li>
       <li>
-        <strong>Description:</strong>
-        <%= for area <- @areas, area.id == assignment.task.area_id do %>
+        <strong>Area of Expertise:</strong>
+        <%= for area <- @areas, area.id == assignment.developer.expertise_id do %>
         <!-- in theory this should only run once -->
           <%= area.name %>
         <%end%>
