@@ -3,8 +3,8 @@ defmodule Project.Organization.Developer do
   import Ecto.Changeset
 
   schema "developers" do
-    field :firstName, :string
-    field :lastName, :string
+    field :first_name, :string
+    field :last_name, :string
     field :email, :string
     belongs_to :expertise, Project.Organization.Expertise
 
@@ -14,7 +14,7 @@ defmodule Project.Organization.Developer do
   @doc false
   def changeset(developer, attrs) do
     developer
-    |> cast(attrs, [:firstName, :lastName, :email, :expertise_id])
-    |> validate_required([:firstName, :lastName, :email])
+    |> cast(attrs, [:first_name, :last_name, :email, :expertise_id])
+    |> validate_required([:first_name, :last_name, :email])
   end
 end

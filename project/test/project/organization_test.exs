@@ -118,7 +118,7 @@ defmodule Project.OrganizationTest do
 
     import Project.OrganizationFixtures
 
-    @invalid_attrs %{email: nil, firstname: nil, lastname: nil}
+    @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
     test "list_developers/0 returns all developers" do
       developer = developer_fixture()
@@ -131,12 +131,12 @@ defmodule Project.OrganizationTest do
     end
 
     test "create_developer/1 with valid data creates a developer" do
-      valid_attrs = %{email: "some email", firstname: "some firstname", lastname: "some lastname"}
+      valid_attrs = %{email: "some email", first_name: "some first_name", last_name: "some last_name"}
 
       assert {:ok, %Developer{} = developer} = Organization.create_developer(valid_attrs)
       assert developer.email == "some email"
-      assert developer.firstname == "some firstname"
-      assert developer.lastname == "some lastname"
+      assert developer.first_name == "some first_name"
+      assert developer.last_name == "some last_name"
     end
 
     test "create_developer/1 with invalid data returns error changeset" do
@@ -145,12 +145,12 @@ defmodule Project.OrganizationTest do
 
     test "update_developer/2 with valid data updates the developer" do
       developer = developer_fixture()
-      update_attrs = %{email: "some updated email", firstname: "some updated firstname", lastname: "some updated lastname"}
+      update_attrs = %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name"}
 
       assert {:ok, %Developer{} = developer} = Organization.update_developer(developer, update_attrs)
       assert developer.email == "some updated email"
-      assert developer.firstname == "some updated firstname"
-      assert developer.lastname == "some updated lastname"
+      assert developer.first_name == "some updated first_name"
+      assert developer.last_name == "some updated last_name"
     end
 
     test "update_developer/2 with invalid data returns error changeset" do
@@ -230,7 +230,7 @@ defmodule Project.OrganizationTest do
 
     import Project.OrganizationFixtures
 
-    @invalid_attrs %{email: nil, firstName: nil, lastName: nil}
+    @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
     test "list_developers/0 returns all developers" do
       developer = developer_fixture()
@@ -243,12 +243,12 @@ defmodule Project.OrganizationTest do
     end
 
     test "create_developer/1 with valid data creates a developer" do
-      valid_attrs = %{email: "some email", firstName: "some firstName", lastName: "some lastName"}
+      valid_attrs = %{email: "some email", first_name: "some first_name", last_name: "some last_name"}
 
       assert {:ok, %Developer{} = developer} = Organization.create_developer(valid_attrs)
       assert developer.email == "some email"
-      assert developer.firstName == "some firstName"
-      assert developer.lastName == "some lastName"
+      assert developer.first_name == "some first_name"
+      assert developer.last_name == "some last_name"
     end
 
     test "create_developer/1 with invalid data returns error changeset" do
@@ -257,12 +257,12 @@ defmodule Project.OrganizationTest do
 
     test "update_developer/2 with valid data updates the developer" do
       developer = developer_fixture()
-      update_attrs = %{email: "some updated email", firstName: "some updated firstName", lastName: "some updated lastName"}
+      update_attrs = %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name"}
 
       assert {:ok, %Developer{} = developer} = Organization.update_developer(developer, update_attrs)
       assert developer.email == "some updated email"
-      assert developer.firstName == "some updated firstName"
-      assert developer.lastName == "some updated lastName"
+      assert developer.first_name == "some updated first_name"
+      assert developer.last_name == "some updated last_name"
     end
 
     test "update_developer/2 with invalid data returns error changeset" do

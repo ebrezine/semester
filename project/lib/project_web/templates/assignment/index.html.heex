@@ -21,7 +21,7 @@
       <td>
       <!-- aboslutely nightmarish code -->
         <%= Project.Organization.get_expertise!(Project.Organization.get_developer!(assignment.developer_id).expertise_id).name %>
-        <%= Project.Organization.get_developer!(assignment.developer_id).lastName %>
+        <%= Project.Organization.get_developer!(assignment.developer_id).last_name %>
       </td>
       <td><%= Project.Organization.get_task!(assignment.task_id).name %></td>
 

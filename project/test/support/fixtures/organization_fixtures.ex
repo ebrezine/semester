@@ -41,8 +41,8 @@ defmodule Project.OrganizationFixtures do
       attrs
       |> Enum.into(%{
         email: "some email",
-        firstname: "some firstname",
-        lastname: "some lastname"
+        first_name: "some first_name",
+        last_name: "some last_name"
       })
       |> Project.Organization.create_developer()
 
@@ -61,22 +61,6 @@ defmodule Project.OrganizationFixtures do
       |> Project.Organization.create_expertise()
 
     expertise
-  end
-
-  @doc """
-  Generate a developer.
-  """
-  def developer_fixture(attrs \\ %{}) do
-    {:ok, developer} =
-      attrs
-      |> Enum.into(%{
-        email: "some email",
-        firstName: "some firstName",
-        lastName: "some lastName"
-      })
-      |> Project.Organization.create_developer()
-
-    developer
   end
 
   @doc """

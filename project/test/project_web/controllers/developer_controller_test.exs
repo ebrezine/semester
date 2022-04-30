@@ -3,9 +3,9 @@ defmodule ProjectWeb.DeveloperControllerTest do
 
   import Project.OrganizationFixtures
 
-  @create_attrs %{email: "some email", firstName: "some firstName", lastName: "some lastName"}
-  @update_attrs %{email: "some updated email", firstName: "some updated firstName", lastName: "some updated lastName"}
-  @invalid_attrs %{email: nil, firstName: nil, lastName: nil}
+  @create_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name"}
+  @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name"}
+  @invalid_attrs %{email: nil, first_name: nil, last_name: nil}
 
   describe "index" do
     test "lists all developers", %{conn: conn} do

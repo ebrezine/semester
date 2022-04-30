@@ -15,7 +15,7 @@
 
   <%= select f, :status_id, Enum.map(@statuses, &{&1.name, &1.id}) %>
 
-  <%= select f, :developer_id, Enum.map(@developers, &{&1.firstName, &1.id}) %>
+  <%= select f, :developer_id, Enum.map(@developers, &{&1.first_name, &1.id}) %>
 
   <%= select f, :task_id, Enum.map(@tasks, &{&1.name, &1.id}) %>
 

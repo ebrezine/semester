@@ -20,7 +20,7 @@
   <li>
     <strong>Developer:</strong>
     <%= for developer <- @developers, developer.id == @assignment.developer_id do %>
-      <%= developer.firstName %> <%= developer.lastName %>
+      <%= developer.first_name %> <%= developer.last_name %>
     <% end %>
   </li>
 

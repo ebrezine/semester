@@ -3,14 +3,14 @@ defmodule Project.Repo.Migrations.CreateDevelopers do
 
   def change do
     create table(:developers) do
-      add :firstname, :string
-      add :lastname, :string
+      add :first_name, :string
+      add :last_name, :string
       add :email, :string
-      add :expertise, references(:areas, on_delete: :nothing)
+      add :expertise_id, references(:areas, on_delete: :nothing)
 
       timestamps()
     end
 
-    create index(:developers, [:expertise])
+    create index(:developers, [:expertise_id])
   end
 end
