@@ -3,9 +3,10 @@ defmodule ProjectWeb.AreaController do
 
   alias Project.Organization
   alias Project.Organization.Area
+  alias Project.Repo
 
   def index(conn, _params) do
-    areas = Organization.list_areas()
+    areas = Organization.list_areas() |> Repo.preload(:developer)
     render(conn, "index.html", areas: areas)
   end
 

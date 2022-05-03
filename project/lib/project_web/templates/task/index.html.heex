@@ -20,7 +20,7 @@
       <td>
         <span><%= link "Show", to: Routes.task_path(@conn, :show, task) %></span>
         <span><%= link "Edit", to: Routes.task_path(@conn, :edit, task) %></span>
-        <span><%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= if task.developer |> length == 0 do link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] end %></span>
       </td>
     </tr>
 <% end %>

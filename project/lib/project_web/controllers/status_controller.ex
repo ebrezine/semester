@@ -3,9 +3,10 @@ defmodule ProjectWeb.StatusController do
 
   alias Project.Organization
   alias Project.Organization.Status
+  alias Project.Repo
 
   def index(conn, _params) do
-    statuses = Organization.list_statuses()
+    statuses = Organization.list_statuses() |> Repo.preload(:developer)
     render(conn, "index.html", statuses: statuses)
   end
 

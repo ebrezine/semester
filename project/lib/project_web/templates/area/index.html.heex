@@ -16,7 +16,7 @@
       <td>
         <span><%= link "Show", to: Routes.area_path(@conn, :show, area) %></span>
         <span><%= link "Edit", to: Routes.area_path(@conn, :edit, area) %></span>
-        <span><%= link "Delete", to: Routes.area_path(@conn, :delete, area), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= if area.developer |> length == 0 do link "Delete", to: Routes.area_path(@conn, :delete, area), method: :delete, data: [confirm: "Are you sure?"] end %></span>
       </td>
     </tr>
 <% end %>
