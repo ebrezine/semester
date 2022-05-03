@@ -3,9 +3,10 @@ defmodule ProjectWeb.ExpertiseController do
 
   alias Project.Organization
   alias Project.Organization.Expertise
+  alias Project.Repo
 
   def index(conn, _params) do
-    expertises = Organization.list_expertises()
+    expertises = Organization.list_expertises() |> Repo.preload(:developer)
     render(conn, "index.html", expertises: expertises)
   end
 

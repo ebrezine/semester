@@ -4,6 +4,7 @@ defmodule Project.Organization.Status do
 
   schema "statuses" do
     field :name, :string
+    has_many :assignment, Project.Organization.Assignment
 
     timestamps()
   end
