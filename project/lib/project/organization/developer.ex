@@ -7,6 +7,7 @@ defmodule Project.Organization.Developer do
     field :last_name, :string
     field :email, :string
     belongs_to :expertise, Project.Organization.Expertise
+    has_many :assignment, Project.Organization.Assignment
 
     timestamps()
   end

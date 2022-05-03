@@ -6,6 +6,7 @@ defmodule Project.Organization.Task do
     field :description, :string
     field :name, :string
     belongs_to :area, Project.Organization.Area
+    has_many :assignment, Project.Organization.Assignment
 
     timestamps()
   end

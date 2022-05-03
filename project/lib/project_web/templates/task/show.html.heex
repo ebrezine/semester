@@ -21,7 +21,10 @@
 <h2>Current Assignments</h2>
 
 <ul>
-  <%= for assignment <- @assignments, assignment.task_id == @task.id do %>
+  <%= if @assignments |> length == 0 do %>
+    <em>This task is not assigned to any developers.</em>
+  <% else %>
+    <%= for assignment <- @assignments, assignment.task_id == @task.id do %>
     <h3> <%= assignment.name %> </h3>
     <li><strong>Due:</strong> <%= assignment.due_date %></li>
     <li><strong>Status:</strong> <%= assignment.status.name %></li>
@@ -36,6 +39,7 @@
         <%end%>
       </li>
     </ul>
+    <% end %>
   <% end %>
 </ul>
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span> |

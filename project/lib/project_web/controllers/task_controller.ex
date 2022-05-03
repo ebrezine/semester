@@ -6,7 +6,7 @@ defmodule ProjectWeb.TaskController do
   alias Project.Repo
 
   def index(conn, _params) do
-    tasks = Organization.list_tasks() |> Repo.preload(:area)
+    tasks = Organization.list_tasks() |> Repo.preload(:area) |> Repo.preload(:assignment)
     render(conn, "index.html", tasks: tasks)
   end
 

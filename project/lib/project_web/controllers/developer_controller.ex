@@ -6,7 +6,7 @@ defmodule ProjectWeb.DeveloperController do
   alias Project.Repo
 
   def index(conn, _params) do
-    developers = Organization.list_developers() |> Repo.preload(:assignment)
+    developers = Organization.list_developers() |> Repo.preload(:expertise) |> Repo.preload(:assignment)
     IO.inspect(developers)
     render(conn, "index.html", developers: developers)
   end
