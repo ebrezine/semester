@@ -4,6 +4,7 @@ defmodule Project.Organization.Expertise do
 
   schema "expertises" do
     field :name, :string
+    has_many :developer, Project.Organization.Developer
 
     timestamps()
   end

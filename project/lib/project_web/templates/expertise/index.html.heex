@@ -16,7 +16,7 @@
       <td>
         <span><%= link "Show", to: Routes.expertise_path(@conn, :show, expertise) %></span>
         <span><%= link "Edit", to: Routes.expertise_path(@conn, :edit, expertise) %></span>
-        <span><%= link "Delete", to: Routes.expertise_path(@conn, :delete, expertise), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= if expertise.developer |> length == 0 do link "Delete", to: Routes.expertise_path(@conn, :delete, expertise), method: :delete, data: [confirm: "Are you sure?"] end%></span>
       </td>
     </tr>
 <% end %>

@@ -4,6 +4,7 @@ defmodule Project.Organization.Area do
 
   schema "areas" do
     field :name, :string
+    has_many :task, Project.Organization.Task
 
     timestamps()
   end
