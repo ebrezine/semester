@@ -13,6 +13,7 @@
   <%= text_input f, :description %>
   <%= error_tag f, :description %>
 
+  <strong>Task area: </strong>
   <%= select f, :area_id, Enum.map(@areas, &{&1.name, &1.id}) %>
 
   <div>

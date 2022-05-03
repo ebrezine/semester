@@ -17,6 +17,7 @@
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
+  <strong>Area of Expertise: </strong>
   <%= select f, :expertise_id, Enum.map(@expertises, &{&1.name, &1.id}) %>
 
   <div>
