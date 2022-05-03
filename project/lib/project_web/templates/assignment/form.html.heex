@@ -13,11 +13,17 @@
   <%= text_input f, :due_date %>
   <%= error_tag f, :due_date %>
 
+  <strong>Assignment status: </strong>
   <%= select f, :status_id, Enum.map(@statuses, &{&1.name, &1.id}) %>
+  <br>
 
-  <%= select f, :developer_id, Enum.map(@developers, &{&1.first_name, &1.id}) %>
+  <strong>Developer name: </strong>
+  <%= select f, :developer_id, Enum.map(@developers, &{&1.first_name <> " " <> &1.last_name, &1.id}) %>
+  <br>
 
+  <strong>Task name: </strong>
   <%= select f, :task_id, Enum.map(@tasks, &{&1.name, &1.id}) %>
+  <br>
 
   <div>
     <%= submit "Save" %>
