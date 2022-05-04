@@ -231,8 +231,9 @@ defmodule Project.Organization do
 
   def get_developer_with_location(id) do
     dev = Repo.get!(Developer, id)
-    location = Project.Organization.Developer.get_state_info()
-    Map.put(dev, :location, location)
+    city = Project.Organization.Developer.get_state_info().city
+    Map.put(dev, :city, city)
+    Map.put(dev, :location.state, location.state)
   end
 
   @doc """

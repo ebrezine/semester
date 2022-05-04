@@ -11,6 +11,7 @@ defmodule ProjectWeb.DeveloperController do
     render(conn, "index.html", developers: developers)
   end
 
+  @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Organization.change_developer(%Developer{})
     expertises = Organization.list_expertises()
@@ -30,7 +31,7 @@ defmodule ProjectWeb.DeveloperController do
   end
 
   def show(conn, %{"id" => id}) do
-    developer = Organization.get_developer!(id) |> Repo.preload(:expertise)
+    developer = Organization.get_developer_with_location(id) |> Repo.preload(:expertise)
     assignments = Organization.list_assignments() |> Repo.preload(:task) |> Repo.preload(:status) |> Repo.preload(:developer)
     areas = Organization.list_areas()
     render(conn, "show.html", developer: developer, assignments: assignments, areas: areas)

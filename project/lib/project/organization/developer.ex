@@ -14,11 +14,13 @@ defmodule Project.Organization.Developer do
   end
   #api key = fce66820-cb3c-11ec-9cfd-f54accd38b91
 
-
+  z = Integer.to_string(:zip)
   def get_state_info() do
-    {:ok, response} = HTTPoison.get("https://app.zipcodebase.com/api/v1/search?codes=" <> "#{:zip}&country=US", ["apikey": "fce66820-cb3c-11ec-9cfd-f54accd38b91"])
+    {:ok, response} = HTTPoison.get("https://app.zipcodebase.com/api/v1/search?codes=" <> "#{z}&country=US", ["apikey": "fce66820-cb3c-11ec-9cfd-f54accd38b91"])
     {:ok, values} = Jason.decode(response.body)
-    values
+    city = values["city"]
+    state = values["state"]
+    values = [city, state]
   end
   @doc false
   def changeset(developer, attrs) do
