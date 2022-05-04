@@ -12,7 +12,14 @@ defmodule Project.Organization.Developer do
 
     timestamps()
   end
+  #api key = fce66820-cb3c-11ec-9cfd-f54accd38b91
 
+
+  def get_state_info() do
+    {:ok, response} = HTTPoison.get("https://app.zipcodebase.com/api/v1/search?codes=" <> "#{:zip}&country=US", ["apikey": "fce66820-cb3c-11ec-9cfd-f54accd38b91"])
+    {:ok, values} = Jason.decode(response.body)
+    values
+  end
   @doc false
   def changeset(developer, attrs) do
     developer

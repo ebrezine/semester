@@ -229,6 +229,12 @@ defmodule Project.Organization do
   """
   def get_developer!(id), do: Repo.get!(Developer, id)
 
+  def get_developer_with_location(id) do
+    dev = Repo.get!(Developer, id)
+    location = Project.Organization.Developer.get_state_info()
+    Map.put(dev, :location, location)
+  end
+
   @doc """
   Creates a developer.
 
