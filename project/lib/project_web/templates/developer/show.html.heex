@@ -18,6 +18,15 @@
   </li>
 
   <li>
+    <strong>City:</strong>
+    <%= hd(Project.Organization.get_developer_with_location(@developer.id)) %>
+  </li>
+  <li>
+    <strong>State:</strong>
+    <%= tl(Project.Organization.get_developer_with_location(@developer.id)) %>
+  </li>
+
+  <li>
     <strong>Zip:</strong>
     <%= @developer.zip %>
   </li>
@@ -25,14 +34,6 @@
   <li>
     <strong>Area of Expertise:</strong>
     <%= @developer.expertise.name %>
-  </li>
-  <li>
-    <strong>City:</strong>
-    <%= hd(Project.Organization.get_developer_with_location(@developer.id)) %>
-  </li>
-  <li>
-    <strong>State:</strong>
-    <%= tl(Project.Organization.get_developer_with_location(@developer.id)) %>
   </li>
 
 </ul>

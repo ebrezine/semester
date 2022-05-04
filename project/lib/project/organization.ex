@@ -232,12 +232,12 @@ defmodule Project.Organization do
   def get_developer_with_location(id) do
     dev = Repo.get!(Developer, id)
     z = Integer.to_string(dev.zip)
-    {:ok, response} = HTTPoison.get("https://app.zipcodebase.com/api/v1/search?codes=" <> "#{z}&country=US", ["apikey": "fce66820-cb3c-11ec-9cfd-f54accd38b91"])
+    {:ok, response} = HTTPoison.get("https://app.zipcodebase.com/api/v1/search?codes=" <> "#{z}&country=US", [apikey: "fce66820-cb3c-11ec-9cfd-f54accd38b91"])
     {:ok, values} = Jason.decode(response.body)
     inner = values["results"][z] |> List.first
     city = inner["city"]
     state = inner["state"]
-    values = [city, state]
+    [city, state]
   end
 
   @doc """

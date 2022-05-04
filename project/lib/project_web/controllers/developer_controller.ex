@@ -34,8 +34,6 @@ defmodule ProjectWeb.DeveloperController do
     developer = Organization.get_developer!(id) |> Repo.preload(:expertise)
     assignments = Organization.list_assignments() |> Repo.preload(:task) |> Repo.preload(:status) |> Repo.preload(:developer)
     areas = Organization.list_areas()
-    city = Organization.get_developer_with_location(id)
-    state = Organization.get_developer_with_location(id)
     render(conn, "show.html", developer: developer, assignments: assignments, areas: areas)
   end
 
