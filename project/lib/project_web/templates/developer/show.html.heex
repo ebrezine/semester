@@ -26,15 +26,13 @@
     <strong>Area of Expertise:</strong>
     <%= @developer.expertise.name %>
   </li>
-
   <li>
     <strong>City:</strong>
-    <%= @developer.city %>
+    <%= hd(Project.Organization.get_developer_with_location(@developer.id)) %>
   </li>
-
   <li>
     <strong>State:</strong>
-    <%= @developer.state %>
+    <%= tl(Project.Organization.get_developer_with_location(@developer.id)) %>
   </li>
 
 </ul>
